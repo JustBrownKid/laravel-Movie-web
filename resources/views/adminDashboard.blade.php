@@ -420,7 +420,7 @@
                 <!-- Release Year -->
                 <div class="mb-4">
                     <label class="block text-sm text-left text-gray-400 mb-1" for="release_year">Release Year</label>
-                    <input type="number" name="release_year" id="release_year" value="{{ $item->release_year }}"
+                    <input type="text" name="release_year" id="release_year" value="{{ $item->release_year }}"
                         class="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded text-white">
                 </div>
 
