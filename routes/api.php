@@ -8,12 +8,18 @@ use App\Http\Controllers\Api\MovieApiController;
 
 Route::post('/login',[AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
-Route::middleware('auth:sanctum')->post('/logout', [AuthController::class, 'logout']);
-Route::get('/movies', [MovieApiController::class, 'index']);
-Route::get('/movies/{id}', [MovieApiController::class, 'show']);
 
-Route::get('/admin', function(){
-     return response()->json([
-        'message' => 'You are an admin'
-    ], 200);
-})->middleware('auth:sanctum', 'ApiAdmin'); // Add the middleware to the route
+
+Route::middleware('auth:sanctum')->group(function () {
+     Route::middleware('auth:sanctum')->post('/logout', [AuthController::class, 'logout']);
+     Route::get('/movies', [MovieApiController::class, 'index']);
+     Route::get('/movies/{id}', [MovieApiController::class, 'show']);
+     
+     Route::middleware('ApiAdmin')->group(function () {
+         Route::post('/movies', [MovieApiController::class, 'store']);
+         Route::put('/movies/{id}', [MovieApiController::class, 'update']);
+         Route::delete('/movies/{id}', [MovieApiController::class, 'destroy']);
+     });
+     
+    });
+

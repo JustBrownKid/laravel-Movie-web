@@ -18,6 +18,26 @@ class MovieApiController extends Controller
             'data' => $movies,
         ]);
     }
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'image' => 'nullable|string',
+            'runtime' => 'nullable|string',
+            'release_year' => 'nullable|string',
+            'watch' => 'nullable|string',
+            'actors' => 'array|required',
+            'categories' => 'array|required',
+        ]);
+
+        $movie = Movie::create($validated);
+
+        return response()->json([
+            'status' => true,
+            'data' => $movie
+        ]);
+    }
     public function show($id)
     {
         $movie = Movie::with(['actors', 'categories'])->find($id);
