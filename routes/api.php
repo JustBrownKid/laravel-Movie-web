@@ -12,4 +12,8 @@ Route::middleware('auth:sanctum')->post('/logout', [AuthController::class, 'logo
 Route::get('/movies', [MovieApiController::class, 'index']);
 Route::get('/movies/{id}', [MovieApiController::class, 'show']);
 
-
+Route::get('/admin', function(){
+     return response()->json([
+        'message' => 'You are an admin'
+    ], 200);
+})->middleware('auth:sanctum', 'ApiAdmin'); // Add the middleware to the route
