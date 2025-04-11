@@ -113,7 +113,8 @@ class MovieController extends Controller
             'runtime' => $request->runtime,
             'release_year' => $request->release_year,
         ]);
-
+        $movie->actors()->attach($request->actors);
+        $movie->categories()->attach($request->categories);
         return redirect()->back()->with('success', 'Movie updated successfully!');
     }
 
