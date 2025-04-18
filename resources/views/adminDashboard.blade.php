@@ -331,8 +331,44 @@
 
   </div>
 
+     <div class="border rounded-xl bg-gray-800 border-neutral-700 p-6 mt-6">
+    <h2 class="text-center text-white text-lg font-semibold mb-4">Category List</h2>
+    <div class="w-full overflow-x-auto">
+        <table class="min-w-full bg-gray-800 border border-gray-300 dark:border-neutral-700 rounded-lg shadow-md">
+            <thead>
+                <tr class="bg-gray-900 dark:bg-neutral-800 text-gray-200 dark:text-gray-300">
+                    <th class="px-4 py-3 text-left">Name</th>
+                    <th class="px-4 py-3 text-left">Role</th>
+                    <th class="px-4 py-3 text-left">Email</th>
+                    <th class="px-4 py-3 text-left">Created actorSelect</th>
+                    <th class="px-4 py-3 text-left">Actions</th>
+                </tr>
+            </thead>
+        </table>
+        <div class="max-h-96 overflow-y-auto">
+            <table class="min-w-full">
+                <tbody>
+                    @foreach ($userList as $item)
+                        <tr class="bg-gray-900 border-b border-gray-200 dark:border-neutral-700">
+                            <td class="px-4 py-3 text-gray-200 dark:text-gray-100">{{ $item->name }}</td>
+                            <td class="px-4 py-3 text-gray-200 dark:text-gray-100">{{ $item->role }}</td>
+                            <td class="px-4 py-3 text-gray-200 dark:text-gray-100">{{ $item->email }}</td>
+                            <td class="px-4 py-3 text-gray-200 dark:text-gray-100">{{ $item->created_at }}</td>
+                            <td class="px-4 py-3 text-right">
+                                    <!-- Just UI buttons, no functionality -->
+                                    <button class="flex items-center text-yellow-500 hover:text-yellow-400 space-x-1">
+                                        <i class="fas fa-edit"></i>
+                                        <span>Edit</span>
+                                    </button>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
-   {{$userList}}
   <!-- Movies Table -->
   <div class="grid grid-cols-1 mb-4 lg:grid-cols-3 gap-4">
     <!-- Movie List -->
@@ -720,6 +756,9 @@
   </div>
     </div>
   </div>
+
+
+  
 
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
