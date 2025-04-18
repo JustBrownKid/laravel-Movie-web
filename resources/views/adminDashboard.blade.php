@@ -331,6 +331,8 @@
 
   </div>
 
+
+   {{$userList}}
   <!-- Movies Table -->
   <div class="grid grid-cols-1 mb-4 lg:grid-cols-3 gap-4">
     <!-- Movie List -->

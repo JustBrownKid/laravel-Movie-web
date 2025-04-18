@@ -27,6 +27,7 @@ class MovieController extends Controller
         $data = Movie::count();
         $movie = Movie::all();
         $user = User::count();
+        $userList = User::all();
         $admin = User::where('role', '=', 'admin')->count();
         $superAdmin = User::where('role', '=', 'superAdmin')->count();
         $castData = Actor::all();
@@ -43,7 +44,8 @@ class MovieController extends Controller
             'castData',
             'categoryData',
             'admin',
-            'superAdmin'
+            'superAdmin',
+            'userList'
         ));
     }
 
